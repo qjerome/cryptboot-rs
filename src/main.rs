@@ -137,10 +137,8 @@ impl Cryptboot {
 #[derive(Debug, Parser)]
 pub struct Args {
     /// configuration file
-    #[clap(short)]
-    config: Option<String>,
-    #[clap(long)]
-    dump: bool,
+    #[clap(short, long, default_value_t = String::from("/etc/cryptboot/config.toml"))]
+    config: String,
     #[clap(subcommand)]
     command: Option<Command>,
 }
@@ -232,10 +230,9 @@ fn main() -> Result<(), anyhow::Error> {
         return Err(anyhow!("this program needs to run as root"));
     }
 
-    let config_path = args.config.unwrap_or("/etc/cryptboot/config.toml".into());
     let config: Config = toml::from_str(
-        &fs::read_to_string(&config_path)
-            .map_err(|e| anyhow!("failed to read configuration file {}: {e}", &config_path))?,
+        &fs::read_to_string(&args.config)
+            .map_err(|e| anyhow!("failed to read configuration file {}: {e}", &args.config))?,
     )?;
 
     let cryptboot = Cryptboot::from_config(config);
