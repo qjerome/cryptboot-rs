@@ -1,5 +1,8 @@
 # Cryptboot
 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/qjerome/cryptboot-rs/rust.yml?style=for-the-badge)](https://github.com/qjerome/cryptboot-rs/actions/workflows/rust.yml)
+
+
 Cryptboot helps managing Linux setup using a dedicated encrypted boot partition.
 It aims at being the successor of [cryptboot (bash)](https://github.com/xmikos/cryptboot).
 
