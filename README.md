@@ -31,11 +31,11 @@ Commands:
   mount         Mount encrypted boot partition
   umount        Unmount encrypted boot partition
   grub-install  Install Grub in EFI mountpoint
-  move-sbctl    Move sbctl files to encrypted boot partition and creates a symlink to /usr/share/secureboot
-  run           Mount encrypted boot partition, run command and unmount
+  harden-sbctl  Move sbctl /usr/share/secureboot directory to encrypted boot partition and creates a symlink to it. After that command sbctl will work only through cryptboot
+  run           Mount encrypted boot partition, run command then unmount
   help          Print this message or the help of the given subcommand(s)
 
 Options:
-  -c, --config <CONFIG>  configuration file [default: /etc/cryptboot/config.toml]
+  -c, --config <CONFIG>  Path of configuration file [default: /etc/cryptboot/config.toml]
   -h, --help             Print help
 ```

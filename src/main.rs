@@ -68,7 +68,7 @@ impl Cryptboot {
         Ok(m)
     }
 
-    fn move_sbctl(&self) -> anyhow::Result<()> {
+    fn harden_sbctl(&self) -> anyhow::Result<()> {
         let sbctl_dir = PathBuf::from("/usr/share/secureboot").canonicalize()?;
         let dst = self.0.boot.mountpoint.join("secureboot");
 
@@ -153,8 +153,9 @@ enum Command {
     Umount,
     /// Install Grub in EFI mountpoint
     GrubInstall(GrubInstallOptions),
-    /// Move sbctl files to encrypted boot partition and creates a symlink to /usr/share/secureboot
-    MoveSbctl,
+    /// Move sbctl /usr/share/secureboot directory to encrypted boot partition and creates a symlink to it.
+    /// After that command sbctl will work only through cryptboot
+    HardenSbctl,
     /// Mount encrypted boot partition, run command then unmount
     Run(RunOptions),
 }
@@ -243,7 +244,7 @@ fn main() -> Result<(), anyhow::Error> {
             Command::Mount => cryptboot.mount().map(|_| ())?,
             Command::Umount => cryptboot.umount()?,
             Command::GrubInstall(o) => cryptboot.grub_install(o)?,
-            Command::MoveSbctl => cryptboot.move_sbctl()?,
+            Command::HardenSbctl => cryptboot.harden_sbctl()?,
             Command::Run(o) => cryptboot.run(o)?,
         }
     }
