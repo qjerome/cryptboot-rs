@@ -16,3 +16,22 @@ Its main features are:
 Advantages of using a dedicated encrypted boot partition:
 * only efi stub is accessible, all the rest (kernel, initramfs, grub configuration ...) is hidden in encrypted boot
 * boot partition can be used as a vault to store secure boot signing keys
+
+## Usage
+
+```
+Usage: cryptboot [OPTIONS] [COMMAND]
+
+Commands:
+  configure     Create a configuration from command line
+  mount         Mount encrypted boot partition
+  umount        Unmount encrypted boot partition
+  grub-install  Install Grub in EFI mountpoint
+  move-sbctl    Move sbctl files to encrypted boot partition and creates a symlink to /usr/share/secureboot
+  run           Mount encrypted boot partition, run command and unmount
+  help          Print this message or the help of the given subcommand(s)
+
+Options:
+  -c, --config <CONFIG>  configuration file [default: /etc/cryptboot/config.toml]
+  -h, --help             Print help
+```
