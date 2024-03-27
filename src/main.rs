@@ -136,7 +136,7 @@ impl Cryptboot {
 
 #[derive(Debug, Parser)]
 pub struct Args {
-    /// configuration file
+    /// Path of configuration file
     #[clap(short, long, default_value_t = String::from("/etc/cryptboot/config.toml"))]
     config: String,
     #[clap(subcommand)]
@@ -155,7 +155,7 @@ enum Command {
     GrubInstall(GrubInstallOptions),
     /// Move sbctl files to encrypted boot partition and creates a symlink to /usr/share/secureboot
     MoveSbctl,
-    /// Mount encrypted boot partition, run command and unmount
+    /// Mount encrypted boot partition, run command then unmount
     Run(RunOptions),
 }
 
