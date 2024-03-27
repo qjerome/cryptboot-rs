@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 if [ ! $INSTALL_DIR ]
 then 
     INSTALL_DIR=/bin
