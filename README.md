@@ -12,6 +12,7 @@ Its main features are:
 * easy mount/umount encrypted boot partitions
 * grub installation supporting secure boot (bundling all the needed grub modules)
 * allow to run commands on temporarily mounted encrypted boot partition (to be used for system updates)
+* integrated with [sbctl](https://github.com/Foxboron/sbctl) to manage **secure boot** setup
   
 Advantages of using a dedicated encrypted boot partition:
 * only efi stub is accessible, all the rest (kernel, initramfs, grub configuration ...) is hidden in encrypted boot
