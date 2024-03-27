@@ -21,6 +21,14 @@ Advantages of using a dedicated encrypted boot partition:
 * only efi stub is accessible, all the rest (kernel, initramfs, grub configuration ...) is hidden in encrypted boot
 * boot partition can be used as a vault to store secure boot signing keys
 
+## Installation
+
+```
+git clone https://github.com/qjerome/cryptboot-rs
+cd cryptboot-rs
+./install.sh
+```
+
 ## Usage
 
 ```
